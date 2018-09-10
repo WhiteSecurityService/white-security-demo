@@ -9,6 +9,9 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.social.security.SocialUser;
+import org.springframework.social.security.SocialUserDetails;
+import org.springframework.social.security.SocialUserDetailsService;
 import org.springframework.stereotype.Component;
 
 /**
@@ -18,7 +21,7 @@ import org.springframework.stereotype.Component;
  * @Date: 2018/9/7
  */
 @Component
-public class DemoUserDetailsService implements UserDetailsService {
+public class DemoUserDetailsService implements UserDetailsService, SocialUserDetailsService {
 
     private Logger logger = LoggerFactory.getLogger(getClass());
 
@@ -27,8 +30,20 @@ public class DemoUserDetailsService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        logger.info("登录用户名:" + username);
+        return buildUser(username);
+    }
+
+    @Override
+    public SocialUserDetails loadUserByUserId(String userId) throws UsernameNotFoundException {
+        logger.info("第三方应用登录用户Id:" + userId);
+        return buildUser(userId);
+    }
+
+    private SocialUserDetails buildUser(String userId) {
         String password = passwordEncoder.encode("123456");
+        logger.info("数据库密码:" + password);
         // 封装用户信息，并返回。参数分别是：用户名，密码，用户权限
-        return new User(username, password, true,true, true,true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+        return new SocialUser(userId, password, true,true, true,true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
     }
 }

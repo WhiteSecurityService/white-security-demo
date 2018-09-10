@@ -9,6 +9,10 @@ white:
         length: 4
         width: 100
         url: /admin,/admin/*
+    social:
+      qq:
+        app-id:
+        app-secret:
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
