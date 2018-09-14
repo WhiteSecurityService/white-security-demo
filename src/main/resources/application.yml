@@ -2,6 +2,7 @@
 #  security:
 #    browser:
 #      loginPage: /demo-login.html
+
 white:
   security:
     code:
@@ -11,11 +12,18 @@ white:
         url: /admin,/admin/*
     social:
       qq:
-        app-id:
-        app-secret:
+        app-id: 100550231
+        app-secret: 69b6ab57b22f3c2fe6a6149274e3295e
+        providerId: callback.do
+      filterProcessUrl: /qqLogin
+    browser:
+      signUpUrl: /demo-signUp.html
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     url: jdbc:mysql://localhost/white-security-service?useUnicode=true&characterEncoding=utf-8&useSSL=true
     username: root
     password: 123
+
+server:
+  port: 80
