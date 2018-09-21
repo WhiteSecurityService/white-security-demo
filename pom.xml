@@ -31,9 +31,14 @@
 
 	<dependencies>
 		<!-- Project Begin -->
-		<dependency>
+		<!--<dependency>
 			<groupId>com.white</groupId>
 			<artifactId>white-security-browser</artifactId>
+			<version>${project.parent.version}</version>
+		</dependency>-->
+		<dependency>
+			<groupId>com.white</groupId>
+			<artifactId>white-security-app</artifactId>
 			<version>${project.parent.version}</version>
 		</dependency>
 		<!-- Project End -->

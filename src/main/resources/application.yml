@@ -21,6 +21,7 @@ white:
         app-secret: 60f78681d063590a469f1b297feff3c4
     browser:
       signUpUrl: /demo-signUp.html
+      signOutUrl: /demo-logout.html #不配置返回JSON
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
@@ -31,6 +32,13 @@ spring:
     store-type: redis
 
 server:
-  port: 80
+  port: 8080
   session:
     timeout: 600
+
+## OAuth2 Config
+security:
+  oauth2:
+    client:
+      client-id: white
+      client-secret: whitesecret

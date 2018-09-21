@@ -44,6 +44,6 @@ public class DemoUserDetailsService implements UserDetailsService, SocialUserDet
         String password = passwordEncoder.encode("123456");
         logger.info("数据库密码:" + password);
         // 封装用户信息，并返回。参数分别是：用户名，密码，用户权限
-        return new SocialUser(userId, password, true,true, true,true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin"));
+        return new SocialUser(userId, password, true,true, true,true, AuthorityUtils.commaSeparatedStringToAuthorityList("admin,ROLE_USER"));
     }
 }
